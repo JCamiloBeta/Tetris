@@ -10,6 +10,8 @@ screen = pygame.display.set_mode((360, 720))
 clock = pygame.time.Clock()
 running = True
 dt = 0
+tablero = [[0 for j in range(10)] for i in range(20)]
+
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
@@ -23,13 +25,17 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("purple")
 
-    pygame.draw.circle(screen, "red", player_pos, 40)
-    pygame.draw.rect(screen,"blue",(180,50,15,15))
-    pygame.draw.rect(screen,"blue",(180,61,15,15))
-    pygame.draw.rect(screen,"blue",(180,72,15,15))
-    pygame.draw.rect(screen,"blue",(180,83,15,15))
+    # Recorrer la matriz
+    for i in range(20):
+        posy = 50+i*17
+        for j in range(10):
+            posx = 100+j*17
+            pygame.draw.rect(screen,"blue",(posx,posy,15,15))
+            
 
-    pygame.draw.rect(screen, "black", [100, 50, 175, 320], 2)
+    pygame.draw.circle(screen, "red", player_pos, 40)
+
+    pygame.draw.rect(screen, "black", [98, 48, 172, 342], 2)
 
 
     keys = pygame.key.get_pressed()
